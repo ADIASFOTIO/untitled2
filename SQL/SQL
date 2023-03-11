@@ -1,0 +1,35 @@
+DROP TABLE IF EXISTS employee,department;
+DROP TYPE IF EXISTS sex;
+CREATE TYPE sex AS ENUM ('MALE','FEMALE','UNDECIDED');
+
+-- create table department
+
+CREATE TABLE department
+(
+	dept_id                 BIGINT NOT NULL,
+	dept_name               VARCHAR(50) NOT NULL,
+	dept_max_capacity       INT NOT NULL,
+	CONSTRAINT PK_department PRIMARY KEY(dept_id)
+);
+CREATE SEQUENCE department_sequence
+  start 1
+  increment 1
+  OWNED BY department.dept_id;
+
+--create table empolyee
+
+CREATE TABLE employee
+(
+	emp_id  BIGINT NOT NULL,
+	dept_id BIGINT NOT NULL,
+	emp_name VARCHAR(50) NOT NULL,
+	sex       sex NOT NULL,
+	emp_date   DATE NOT NULL,
+	  	CONSTRAINT PK_employee PRIMARY KEY(emp_id),
+	CONSTRAINT FK_employee_department FOREIGN KEY(dept_id)
+		REFERENCES department(dept_id)
+);
+CREATE SEQUENCE person_sequence
+  start 1
+  increment 1
+  OWNED BY employee.dept_id;
