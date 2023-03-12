@@ -6,22 +6,23 @@ public class Department {
     // * dipartimento: id, nome, indirizzo, max capacity
     private Long id;
     private String name;
-    private String adress;
     private int maxCapacity;
     private ArrayList<Employee> employees;
 
 
-    public Department(Long id, String name, String adress, int maxCapacity) {
+    public Department(Long id, String name, int maxCapacity, ArrayList employees) {
         this.id = id;
         this.name = name;
-        this.adress = adress;
+        this.maxCapacity = maxCapacity;
+        this.employees = employees;
+    }
+    public Department(Long id, String name, int maxCapacity) {
+        this.id = id;
+        this.name = name;
         this.maxCapacity = maxCapacity;
     }
     public Department(){
-
     }
-
-
     public Long getId() {
         return id;
     }
@@ -37,15 +38,6 @@ public class Department {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
-
     public int getMaxCapacity() {
         return maxCapacity;
     }
